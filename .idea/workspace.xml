@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74841064-6384-4bed-9b9a-64d91610ebbd" name="Changes" comment="Created functions for getting input and got input for first day">
+    <list default="true" id="74841064-6384-4bed-9b9a-64d91610ebbd" name="Changes" comment="Refactored input functions and solved puzzle one">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/inputs/input.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_puzzle01.py" beforeDir="false" afterPath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_puzzle01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/test/day01_example01.py" beforeDir="false" afterPath="$PROJECT_DIR$/aoc_2025/day_01/test/example_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/test/day01_example02.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/input_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/input_support.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_puzzle01.py" beforeDir="false" afterPath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/src/day01_puzzle02.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/aoc_2025/day_01/test/example_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/aoc_2025/day_01/test/example_tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765802553913</updated>
-      <workItem from="1765802554928" duration="13333000" />
+      <workItem from="1765802554928" duration="14835000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -120,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765810109096</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactored input functions and solved puzzle one">
+      <option name="closed" value="true" />
+      <created>1765816260703</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765816260703</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,12 +159,13 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Created some common functions for the common library" />
     <MESSAGE value="Created functions for getting input and got input for first day" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created functions for getting input and got input for first day" />
+    <MESSAGE value="Refactored input functions and solved puzzle one" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored input functions and solved puzzle one" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AdventOfCode$.coverage" NAME=" Coverage Results" MODIFIED="1765813865579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AdventOfCode$.coverage" NAME=" Coverage Results" MODIFIED="1765816152005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AdventOfCode$day01_common.coverage" NAME="day01_common Coverage Results" MODIFIED="1765809849578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/aoc_2025/day_01/src" />
-    <SUITE FILE_PATH="coverage/AdventOfCode$day01_puzzle01.coverage" NAME="day01_puzzle01 Coverage Results" MODIFIED="1765815985347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/aoc_2025/day_01/src" />
+    <SUITE FILE_PATH="coverage/AdventOfCode$day01_puzzle01.coverage" NAME="day01_puzzle01 Coverage Results" MODIFIED="1765816201747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/aoc_2025/day_01/src" />
     <SUITE FILE_PATH="coverage/AdventOfCode$input_support.coverage" NAME="input_support Coverage Results" MODIFIED="1765806887013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-from common.input_support import *
+from common.input_support import create_input_file, create_example_file
 
 # region Constants
 
@@ -37,7 +37,6 @@ def generate_example_input():
 # region Puzzle Solving
 
 def solve_puzzle01(file_path):
-
     pos = START_POINT
     count = 0
 
@@ -53,6 +52,22 @@ def solve_puzzle01(file_path):
 
     return count
 
+def solve_puzzle02(file_path):
+    pos = START_POINT
+    count = 0
+
+    with open(file_path, "r") as f:
+        lines = f.readlines()
+        for line in lines:
+            if line != "":
+                direction = line[0]
+                distance = int(line[1:])
+
+                count += count_zeroes(pos, direction, distance)
+                pos = turn_dial(pos, direction, distance)
+
+    return count
+
 def turn_dial(pos, direction, distance):
     if direction == LEFT:
         return (pos - distance) % 100
@@ -60,5 +75,28 @@ def turn_dial(pos, direction, distance):
         return (pos + distance) % 100
     else:
         return pos
+
+def count_zeroes(pos, direction, distance):
+    zero_count = 0
+
+    if direction == LEFT:
+        if pos - distance > 0:
+            return zero_count
+        else:
+            if pos != 0:
+                distance -= pos
+                zero_count += 1
+    elif direction == RIGHT:
+        if pos + distance < 100:
+            return zero_count
+        else:
+            if pos != 0:
+                distance = distance - (100 - pos)
+                zero_count += 1
+    else:
+        print("Invalid operation")
+        return zero_count
+
+    return zero_count + distance // 100
 
 # endregion Puzzle Solving
