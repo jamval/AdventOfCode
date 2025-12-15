@@ -1,25 +1,26 @@
 import requests
 import os
 
+# TODO: Add docstrings
+
 # region Constants
+
+INPUTS_DIR = "inputs"
+
+EXAMPLE = "example"
+INPUT = "input"
+
+EXAMPLE_FILE = "example.txt"
+INPUT_FILE = "input.txt"
 
 # endregion Constants
 
 # region Input Fetching
 
 def get_session_text(year, day, cookies):
-    """
-    Fetches the input data from Advent of Code for a specific day and year.
+    if day[0] == "0":
+        day = day[1]
 
-    Args:
-        year (int): The year of the Advent of Code event
-        day (int): The day number of the challenge
-        cookies (str): The session cookie value for authentication
-
-    Returns:
-        str: The raw input text from the Advent of Code website
-
-    """
     url = f"https://adventofcode.com/{year}/day/{day}/input"
     cookies = {"session": cookies}
 
@@ -28,16 +29,18 @@ def get_session_text(year, day, cookies):
 
 # endregion Input Fetching
 
-# region File Creation
+# region File Path Handling
 
 def get_inputs_path():
     current_dir = os.getcwd()
     parent_dir = current_dir.rsplit('\\', 1)[0]
-    return os.path.join(parent_dir, "inputs")
+    return os.path.join(parent_dir, INPUTS_DIR)
 
-def check_inputs_directory():
-    inputs_dir = get_inputs_path()
+def get_examples_path(year, day):
+    current_dir = os.getcwd()
+    return current_dir + f"\\aoc_{year}\\day_{day}\\{INPUTS_DIR}"
 
+def check_directory_exists(inputs_dir):
     if not os.path.exists(inputs_dir):
         try:
             os.makedirs(inputs_dir)
@@ -47,52 +50,37 @@ def check_inputs_directory():
             return False
     return True
 
-def inputs_file_exits():
-    if not check_inputs_directory():
-        return False
+# endregion File Path Handling
 
-    inputs_dir = get_inputs_path()
-    return os.path.exists(os.path.join(inputs_dir, "input.txt"))
+# region File Creation
 
-def example_file_exists():
-    if not check_inputs_directory():
-        return False
+def create_input_file(year, day, session_cookies):
+    directory_path = get_inputs_path()
+    if not check_directory_exists(directory_path):
+        return ""
 
-    inputs_dir = get_inputs_path()
-    return os.path.exists(os.path.join(inputs_dir, "example.txt"))
+    file_path = os.path.join(directory_path, INPUT_FILE)
 
-def create_file(input_type, text):
-    """Writes text content to a file with the specified type as the base name.
+    if not os.path.exists(file_path):
+        text = get_session_text(year, day, session_cookies)
+        create_file(file_path, text)
 
-    Args:
-        input_type: The base name for the output file (without extension).
-        text: The text content to write to the file.
-    """
-    file_path = os.path.join(get_inputs_path(), f"{input_type}.txt")
+    return file_path
 
+def create_example_file(year, day, text):
+    directory_path = get_examples_path(year, day)
+    if not check_directory_exists(directory_path):
+        return ""
+
+    file_path = os.path.join(directory_path, EXAMPLE_FILE)
+
+    if not os.path.exists(file_path):
+        create_file(file_path, text)
+
+    return file_path
+
+def create_file(file_path, text):
     with open(file_path, "w") as f:
         f.write(text)
-
-def create_input_file(text):
-    """Creates an input.txt file with the provided text.
-
-    This is a convenience wrapper around create_file() specifically for creating
-    input files with the standard 'input.txt' filename.
-
-    Args:
-        text: The text content to write to input.txt
-    """
-    create_file("input", text)
-
-def create_example_file(text):
-    """Creates an example.txt file with the provided text.
-
-    This is a convenience wrapper around create_file() specifically for creating
-    example input files with the standard 'example.txt' filename.
-
-    Args:
-        text: The text content to write to example.txt
-    """
-    create_file("example", text)
 
 # endregion File Creation
