@@ -1,4 +1,11 @@
 import requests
+import os
+
+# region Constants
+
+# endregion Constants
+
+# region Input Fetching
 
 def get_session_text(year, day, cookies):
     """
@@ -19,6 +26,41 @@ def get_session_text(year, day, cookies):
     response = requests.get(url, cookies=cookies)
     return response.text
 
+# endregion Input Fetching
+
+# region File Creation
+
+def get_inputs_path():
+    current_dir = os.getcwd()
+    parent_dir = current_dir.rsplit('\\', 1)[0]
+    return os.path.join(parent_dir, "inputs")
+
+def check_inputs_directory():
+    inputs_dir = get_inputs_path()
+
+    if not os.path.exists(inputs_dir):
+        try:
+            os.makedirs(inputs_dir)
+            return True
+        except OSError as e:
+            print(f"Failed to create inputs directory: {e}")
+            return False
+    return True
+
+def inputs_file_exits():
+    if not check_inputs_directory():
+        return False
+
+    inputs_dir = get_inputs_path()
+    return os.path.exists(os.path.join(inputs_dir, "input.txt"))
+
+def example_file_exists():
+    if not check_inputs_directory():
+        return False
+
+    inputs_dir = get_inputs_path()
+    return os.path.exists(os.path.join(inputs_dir, "example.txt"))
+
 def create_file(input_type, text):
     """Writes text content to a file with the specified type as the base name.
 
@@ -26,7 +68,9 @@ def create_file(input_type, text):
         input_type: The base name for the output file (without extension).
         text: The text content to write to the file.
     """
-    with open(f"{input_type}.txt", "w") as f:
+    file_path = os.path.join(get_inputs_path(), f"{input_type}.txt")
+
+    with open(file_path, "w") as f:
         f.write(text)
 
 def create_input_file(text):
@@ -50,3 +94,5 @@ def create_example_file(text):
         text: The text content to write to example.txt
     """
     create_file("example", text)
+
+# endregion File Creation
